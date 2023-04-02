@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-L9bhWQBBv1yxkw1uV7MSic8oFpVYwLmU6+swU6xX9y0LCe/YJ+UdDfL6MTGH0ZM2hZ1rN3dB2d05rXweOyGO7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <title>Calculator</title>
+
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    
+    .mainContainer {
+      display: inline-block;
+      padding: 2px;
+      border-radius: 20px;
+    }
+
+    .container button {
+      height: 70px;
+      width: 95px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    p {
+      font-size: 12px;
+    }
+
+    input.display {
+      width: 400px;
+      height: 50px;
+      padding-right: 13px;
+      border: none;
+      color: black;
+      font-weight: 600;
+      font-size: 45px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .display::placeholder {
+      color: black;
+      font-weight: 600;
+      font-size: 45px;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+    
+    input.subDisplay {
+      width: 400px;
+      height: 50px;
+      font-size: 20px;
+      padding-right: 16px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      border: none;
+    }
+
+    .container form button {
+      text-align: center;
+      border: 1px solid #cccccc;
+      padding: 2px;
+    }
+
+    .container form .memory button {
+      height: 50px;
+      width: 63px;
+      font-size: 13px;
+      border: none;
+    }
+
+    form {
+      border-radius: 7px;
+
+    }
+    
+    .button {
+      border-radius: 20px;
+    }
+
+    .container form .topbutt button {
+      display: inline-block;
+      height: 50px;
+      width: 63px;
+      font-size: 12px;
+      border: none;
+      background-color: #f3f3f3;
+    }
+
+    .button {
+      margin: 1px;
+    }
+
+    .navbar .navbar-toggler-icon {
+      width: 20px;
+      padding: 0%;
+    }
+
+    .navbar-nav li a {
+      font-size: 14px;
+    }
+
+  </style>
+
+</head>
+<body>
+  <div class="container-fluid bg-dark" style="height: 100vh; width: 100vw;">
+    <div class="container py-5">
+      
+      <form style="background-color: #f3f3f3;">
+      <div class="mainContainer">
+        <div class="topbutt">
+          <button class="topbutt">&nbsp&nbsp<ion-icon name="calculator-outline"></ion-icon></button>
+          <button>Calculator</button>
+          <button class="topbutt" type="button" style="float: right;"><ion-icon name="close-outline"></ion-icon></button>
+          <button class="topbutt" type="button" style="float: right;"><ion-icon name="tablet-landscape-outline"></ion-icon></button>
+          <button class="topbutt" type="button" style="float: right;"><ion-icon name="remove-outline"></ion-icon></button>
+        </div>
+        <div >
+
+        <!--
+          <nav class="navbar navbar" style="background-color: #f3f3f3;">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item nav-link-primary">
+                    <a class="nav-link" style="color: black;" aria-current="page" >Scientific</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" style="color: black;" href="adopt.html">Graphing</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link" style="color: black;" >Programmer</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link" style="color: black;" >Date calculation</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          -->
+          <h6>Standard</h6>
+          <input type="text" disabled class="subDisplay text-end" id="subDisplay" placeholder="0"><br>
+          <input type="text" disabled class="display text-end" id="display" placeholder="0"><br><br>
+        </div>
+        
+
+        <div class="memory" style="background-color: #f3f3f3;">
+          <button type="button" value=""  style="background-color: #f3f3f3;">MC</button>
+          <button type="button" value="" style="background-color: #f3f3f3;">MR</button>
+          <button type="button" value="" style="background-color: #f3f3f3;">M+</button>
+          <button type="button" value="" style="background-color: #f3f3f3;">M-</button>
+          <button type="button" value="" style="background-color: #f3f3f3;">MS</button>
+          <button type="button" value="" style="background-color: #f3f3f3;">Mv</button>
+        </div>
+
+        <div class="button">
+          <button type="button" value=" % " onclick="if (checkNum(this.form.display.value)) { percentage(this.form) }" style="background-color: #f9f9f9;">%</button>
+          <button type="button" value="CE" onclick="display.value ='' " style="background-color: #f9f9f9;">CE</button>
+          <button type="button" value="C" onclick="display.value ='' " style="background-color: #f9f9f9;">C</button>
+          <button type="button" value="DE" onclick="display.value = display.value.slice(0, -1); " style="background-color: #f9f9f9;"><ion-icon name="backspace-outline"></ion-icon></button>
+        </div>
+
+        <div class="button" style="background-color: #f3f3f3;">
+          <button type="button" value=" 1/x " onclick="if (checkNum(this.form.display.value)) { oneOverX(this.form) }" style="background-color: #f9f9f9;">1/x </button>
+          <button type="button" value="  sq  " onclick="if (checkNum(this.form.display.value)) { square(this.form) }" style="background-color: #f9f9f9;">x²</button>
+          <button type="button" value=" sqrt " onclick="if (checkNum(this.form.display.value)) { sqrt(this.form) }" style="background-color: #f9f9f9;">²√x</button>
+          <button type="button" value="   /   " onclick="addChar(this.form.display, '/')" style="background-color: #f9f9f9;">÷</button>
+        </div>
+
+        <div class="button" style="background-color: #f3f3f3;">
+          <button type="button" value="  7  " onclick="addChar(this.form.display, '7')" style="background-color: #ffffff;">7</button>
+          <button type="button" value="  8  " onclick="addChar(this.form.display, '8')" style="background-color: #ffffff;">8</button>
+          <button type="button" value="  9  " onclick="addChar(this.form.display, '9')" style="background-color: #ffffff;">9</button>
+          <button type="button" value="   *   " onclick="addChar(this.form.display, '*')" style="background-color: #f9f9f9;">x</button>
+        </div>
+
+        <div class="button" style="background-color: #f3f3f3;">
+          <button type="button" value="  4  " onclick="addChar(this.form.display, '4')" style="background-color: #ffffff;">4</button>
+          <button type="button" value="  5  " onclick="addChar(this.form.display, '5')" style="background-color: #ffffff;">5</button>
+          <button type="button" value="  6  " onclick="addChar(this.form.display, '6')" style="background-color: #ffffff;">6</button>
+          <button type="button" value="   -   " onclick="addChar(this.form.display, '-')" style="background-color: #f9f9f9;">-</button>
+        </div>
+
+        <div class="button" style="background-color: #f3f3f3;">
+          <button type="button" value="  1  " onclick="addChar(this.form.display, '1')" style="background-color: #ffffff;">1</button>
+          <button type="button" value="  2  " onclick="addChar(this.form.display, '2')" style="background-color: #ffffff;">2</button>
+          <button type="button" value="  3  " onclick="addChar(this.form.display, '3')" style="background-color: #ffffff;">3</button>
+          <button type="button" value="+" onclick="display.value ='+' " style="background-color: #f9f9f9;">+</button>
+        </div>
+
+        <div class="button" style="background-color: #f3f3f3;">
+          <button type="button" value=" +/- " onclick="changeSign(this.form.display)" style="background-color: #ffffff;">+/-</button>
+          <button type="button" value="  0  " onclick="addChar(this.form.display, '0')" style="background-color: #ffffff;">0</button>
+          <button type="button" value="   .  " onclick="addChar(this.form.display, '.')" style="background-color: #ffffff;">.</button>
+          <button type="button" value="           equal          " NAME="equal" onclick="if (checkNum(this.form.display.value)) { compute(this.form) }" style="background-color: #0067c0;">=</button>
+        </div>
+
+
+
+      </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    function addChar(input, character) {
+      if(input.value == null || input.value == "0")
+        input.value = character
+      else
+        input.value += character
+    }
+     
+
+    function sqrt(form) {
+      form.display.value = Math.sqrt(form.display.value);
+    }
+     
+    function exp(form) {
+      form.display.value = Math.exp(form.display.value);
+    }
+     
+    function deleteChar(input) {
+      input.value = input.value.substring(0, input.value.length - 1)
+    }
+     
+    function changeSign(input) {
+      if(input.value.substring(0, 1) == "-")
+        input.value = input.value.substring(1, input.value.length)
+      else
+        input.value = "-" + input.value
+    }
+     
+    function compute(form) {
+      form.display.value = eval(form.display.value)
+    }
+     
+    function square(form) {
+      form.display.value = eval(form.display.value) * eval(form.display.value)
+    }
+
+    function percentage(form) {
+      form.display.value = (form.display.value / form.display.value) * 100;
+    }
+     
+    function oneOverX(form) {
+      form.display.value = 1/ form.display.value;
+    }
+
+    function checkNum(str) {
+      for (var i = 0; i < str.length; i++) {
+        var ch = str.substring(i, i+1)
+        if (ch < "0" || ch > "9") {
+          if (ch != "/" && ch != "*" && ch != "+" && ch != "-" && ch != "."
+            && ch != "(" && ch!= ")") {
+            alert("invalid entry!")
+            return false
+            }
+          }
+        }
+        return true
+    }
+    </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
